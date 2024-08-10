@@ -1,0 +1,61 @@
+import tkinter as tk
+
+root = tk.Tk()
+root.title("Grade Calculator")
+root.geometry("500x400")
+
+def calculate():
+    english = int(englishvalue.get())
+    analytical_skill = int(analytical_skillvalue.get())
+    general = int(generalvalue.get())
+    
+    total = english + analytical_skill + general
+    total_label.config(text=f"Total: {total}")
+
+    average = total / 3
+    average_label.config(text=f"Average: {average:.2f}")
+
+    if average >= 50:
+        grade = "Pass"
+    else:
+        grade = "Fail"
+    grade_label.config(text=f"Grade: {grade}")
+
+
+
+sub1_label = tk.Label(root, text="English:", font="Arial 15")
+sub2_label = tk.Label(root, text="Analytical Skill:", font="Arial 15")
+sub3_label = tk.Label(root, text="General Knowledge:", font="Arial 15")
+total_label = tk.Label(root, text="Total:",font="Arial 15")
+average_label = tk.Label(root, text="Average:", font="Arial 15")
+grade_label = tk.Label(root, text="Grade:", font="Arial 15")
+
+sub1_label.place(x=50, y=20)
+sub2_label.place(x=50, y=70)
+sub3_label.place(x=50, y=120)
+total_label.place(x=50, y=170)
+average_label.place(x=50, y=210)
+grade_label.place(x=50, y=250)
+
+
+englishvalue = tk.StringVar()
+analytical_skillvalue = tk.StringVar()
+generalvalue = tk.StringVar()
+
+englishentry = tk.Entry(root, textvariable=englishvalue, font="Arial 15", width=15)
+analytical_skillentry = tk.Entry(root, textvariable=analytical_skillvalue, font="Arial 15", width=15)
+generalentry = tk.Entry(root, textvariable=generalvalue, font="Arial 15", width=15)
+
+englishentry.place(x=250, y=20)
+analytical_skillentry.place(x=250, y=70)
+generalentry.place(x=250, y=120)
+
+calculate_button = tk.Button(root, text="Calculate", font="Arial 15", bg="white", bd=10, command=calculate)
+calculate_button.place(x=50, y=300)
+
+
+exit_button = tk.Button(root, text="Exit", font="Arial 15", bg="white", bd=10, width=8, command=root.destroy)
+exit_button.place(x=350, y=300)
+
+root.mainloop()
+
